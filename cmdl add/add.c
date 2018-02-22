@@ -13,10 +13,16 @@ int main(int argc, char *argv[]){
 
     if(argc-1){
         for(int i = 1; i <= argc-1; i++){
-            sum += atoi(*argv+i);
+            if(atoi(argv[i])){
+                sum += atoi(argv[i]);
+            }
         }
+        printf("> %d\n", sum);
     }
-    printf("=> %d\n", sum);
+    else{
+        printf("> No arguments :(");
+        return -1;
+    }
 
     return 0;
 }
