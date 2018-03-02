@@ -4,11 +4,10 @@
 int main(int argc, char *argv[]){
     int sum = 0;
     /*
-    for(int i = 0; i <= argc-1; i++){
+    printf("Main arguments:\n");
+    for(int i = 0; i < argc; i++){
             printf("argv[%d]: %c\n", i, *argv[i]);
     }
-
-    printf("argc: %d\n", argc-1);
     */
 
     if(argc-1){
