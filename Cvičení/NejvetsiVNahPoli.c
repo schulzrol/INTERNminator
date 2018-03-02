@@ -10,7 +10,7 @@ unsigned int IndexNejvetsiho(unsigned int *arr, unsigned length, unsigned int *m
 int main(){
     srand((unsigned)time(NULL));
 
-    unsigned int arr[100],
+    unsigned int arr[LENGTH],
                  i,
                  max,
                  maxpos;
