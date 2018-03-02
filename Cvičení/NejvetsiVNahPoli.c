@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+unsigned int IndexNejvetsiho(unsigned int *arr, unsigned length);
+
 #define LENGTH 100
 #define RANDLIMIT 1000
 
@@ -15,17 +17,21 @@ int main(){
 
     for (i = 0; i < LENGTH; i++){
         arr[i] = rand() % (RANDLIMIT+1);
-    }
+
 
     max = *arr;
 
+
+    printf("arr[%u] = %u\n", IndexNejvetsiho(arr, LENGTH), max );
+
+    return 0;
+}
+unsigned int IndexNejvetsiho(unsigned int *arr, unsigned int length){
     for (i = 0; i < LENGTH; i++){
         if(arr[i] > max){
             max = arr[i];
             maxpos = i;
         }
     }
-    printf("arr[%u] = %u\n", maxpos, max );
-
-    return 0;
+    return maxpos;
 }
