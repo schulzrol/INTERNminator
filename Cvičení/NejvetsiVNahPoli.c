@@ -18,7 +18,14 @@ int main(int argc, char *argv[]){
     unsigned int largestpos,
                  arrlength;
 
+<<<<<<< HEAD
     srand((int)time(NULL));
+=======
+    unsigned int arr[LENGTH],
+                 i,
+                 max,
+                 maxpos;
+>>>>>>> fef4896cd2680ea91995a18c684f7ba5e491beb5
 
     /* setting default values */
     arrlength = defaultLENGTH;
