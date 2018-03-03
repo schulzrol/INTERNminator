@@ -2,40 +2,76 @@
 #include <stdlib.h>
 #include <time.h>
 
-unsigned int IndexNejvetsiho(unsigned int *arr, unsigned length, unsigned int *max);
+unsigned int IndexNejvetsiho(unsigned int *arr, unsigned length, unsigned int *largest);
+void assignRandoms(unsigned int *arr, unsigned int arrlength, int randmin, int randmax);
 
-#define LENGTH 100
-#define RANDLIMIT 1000
+#define defaultRANDMAX 1000
+#define defaultRANDMIN 0
+#define defaultLENGTH 100
 
-int main(){
+int main(int argc, char *argv[]){
+    int largest,
+        randmin,
+        randmax;
+    int *arr;
+    unsigned int i,
+                 largestpos,
+                 arrlength;
+
     srand((unsigned)time(NULL));
 
-    unsigned int arr[100],
-                 i,
-                 max,
-                 maxpos;
-
-    for (i = 0; i < LENGTH; i++){
-        arr[i] = rand() % (RANDLIMIT+1);
+    if(argc - 1){   /* If there are any main arguments */
+        switch (argc){
+            case 2:     /* user inputed second argument "arrlength" */
+                arrlength = atoi(*( argv + 1 ));
+            case 3:     /* user inputed third argument "randmin" */
+                randmin = atoi(*( argv + 2 ));
+            case 4:     /* user inputed fourth argument "randmax" */
+                randmax = atoi(*( argv + 3 ));
+            default:    /* user inputed some #$@&%*! */
+                printf("=>maxinarr [length] [randmin] [randmax]\n", );
+                printf("\t-length\tsets the number of elements in array\n", );
+                printf("\t-randmin\tsets the lowest possible value that can occur in array\n", );
+                printf("\t-randmax\tsets the highest possible value that can occur in array\n", );
+                return -1;
+        }
+    }
+    else{   /* No arguments in main*/
+        arrlength = defaultLENGTH;
+        randmin = defaultRANDMIN;
+        randmax = defaultRANDMAX;
     }
 
-    maxpos = IndexNejvetsiho(arr, LENGTH, &max);
+    arr = malloc( arrlength * (unsigned int));  /* dynamically allocate array for 'arraylengh' unsigned ints */
 
-    printf("arr[%u] = %u\n", maxpos, max );
+    if (arr == NULL) {  /* if malloc couldn't allocate that much memory */
+        printf("=> Not enough memory bro :(\n");
+        return -1;
+    }
 
+    assignRandoms(arr, arrlength, randmin, randmax);    /* scramble things up a bit */
+    largestpos = IndexNejvetsiho(arr, arrlength, largest);
+
+    printf("arr[%u] = %d\n", largestpos, largest );
     return 0;
 }
 
-unsigned int IndexNejvetsiho(unsigned int *arr, unsigned int length, unsigned int *max){
-    unsigned int maxpos;
+unsigned int IndexNejvetsiho(unsigned int *arr, unsigned int length, unsigned int *largest){
+    unsigned int largestpos;
 
-    *max = *arr;
+    *largest = *arr;
 
     for (int i = 0; i < length; i++){
-        if(arr[i] > *max){
-            *max = arr[i];
-            maxpos = i;
+        if(arr[i] > *largest){
+            *largest = arr[i];
+            largestpos = i;
         }
     }
-    return maxpos;
+    return largestpos;
+}
+
+void assignRandoms(unsigned int *arr, unsigned int arrlength, int randmin, int randmax){
+    for (int i = 0; i < arrlength; i++){
+        *(arr+i) = (rand() % randmax) + randmin;
+    }
 }
