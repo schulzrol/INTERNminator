@@ -41,7 +41,6 @@ int main(int argc, char *argv[]){
         printf("=> Not enough memory bro ;(\n");
         return -1;
     }
-    printf("\nrandmax: %d\nrandmin: %d\narrlength: %u\n\n", randmax, randmin, arrlength);
 
     assignRandoms(arr, arrlength, randmin, randmax);    /* scramble things up a bit */
     largestpos = IndexNejvetsiho(arr, arrlength, &largest);
@@ -59,8 +58,8 @@ unsigned int IndexNejvetsiho(int *arr, unsigned int arrlength, int *largest){
     *largest = *arr;
 
     for (int i = 0; i < arrlength; i++){
-        if(arr[i] > *largest){
-            *largest = arr[i];
+        if(*(arr+i) > *largest){
+            *largest = *(arr+i);
             largestpos = i;
         }
     }
@@ -69,12 +68,12 @@ unsigned int IndexNejvetsiho(int *arr, unsigned int arrlength, int *largest){
 
 void assignRandoms(int *arr, unsigned int arrlength, int randmin, int randmax){
     for (int i = 0; i < arrlength; i++){
-        *( arr + i ) = (rand() % randmax) + randmin;
+        *(arr+i) = (rand() % randmax) + randmin;
     }
 }
 
 void printHelp(){
-    printf("=> maxinarr [length] [randmin] [randmax]\n" );
+    printf("\n=> maxinarr [length] [randmin] [randmax]\n" );
     printf("\t:length \tsets the number of elements in array\n" );
     printf("\t:randmin\tsets the lowest possible value that can occur in array\n" );
     printf("\t:randmax\tsets the highest possible value that can occur in array\n" );
