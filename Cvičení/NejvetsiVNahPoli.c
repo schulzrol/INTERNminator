@@ -28,10 +28,10 @@ int main(int argc, char *argv[]){
             case 4:     /* user inputed fourth argument "randmax" */
                 randmax = atoi(*( argv + 3 ));
             default:    /* user inputed some #$@&%*! */
-                printf("=>maxinarr [length] [randmin] [randmax]\n" );
-                printf("\t-length\tsets the number of elements in array\n" );
-                printf("\t-randmin\tsets the lowest possible value that can occur in array\n" );
-                printf("\t-randmax\tsets the highest possible value that can occur in array\n" );
+                printf("=> maxinarr [length] [randmin] [randmax]\n" );
+                printf("\t\t-length\tsets the number of elements in array\n" );
+                printf("\t\t-randmin\tsets the lowest possible value that can occur in array\n" );
+                printf("\t\t-randmax\tsets the highest possible value that can occur in array\n" );
                 return -1;
         }
     }
@@ -41,7 +41,7 @@ int main(int argc, char *argv[]){
         randmax = defaultRANDMAX;
     }
 
-    arr = malloc( arrlength * (unsigned int) );  /* dynamically allocate array for 'arraylengh' unsigned ints */
+    arr = malloc( arrlength * sizeof(unsigned int) );  /* dynamically allocate array for 'arraylengh' unsigned ints */
 
     if (arr == NULL) {  /* if malloc couldn't allocate that much memory */
         printf("=> Not enough memory bro :(\n");
@@ -51,7 +51,9 @@ int main(int argc, char *argv[]){
     assignRandoms(arr, arrlength, randmin, randmax);    /* scramble things up a bit */
     largestpos = IndexNejvetsiho(arr, arrlength, &largest);
 
-    printf("arr[%u] = %d\n", largestpos, largest );
+    free(arr);
+
+    printf("=> arr[%u] = %d\n", largestpos, largest );
     return 0;
 }
 
