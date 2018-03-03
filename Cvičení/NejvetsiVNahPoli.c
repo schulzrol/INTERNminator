@@ -54,7 +54,7 @@ int main(int argc, char *argv[]){
 }
 
 unsigned int IndexNejvetsiho(int *arr, unsigned int arrlength, int *largest){
-    unsigned int largestpos;
+    unsigned int largestpos = 0;
 
     *largest = *arr;
 
