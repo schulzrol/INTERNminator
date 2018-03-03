@@ -19,11 +19,6 @@ int main(int argc, char *argv[]){
                  arrlength;
 
     srand((int)time(NULL));
-    
-    unsigned int arr[LENGTH],
-                 i,
-                 max,
-                 maxpos;
 
     /* setting default values */
     arrlength = defaultLENGTH;
@@ -46,6 +41,7 @@ int main(int argc, char *argv[]){
         printf("=> Not enough memory bro ;(\n");
         return -1;
     }
+    printf("\nrandmax: %d\nrandmin: %d\narrlength: %u\n\n", randmax, randmin, arrlength);
 
     assignRandoms(arr, arrlength, randmin, randmax);    /* scramble things up a bit */
     largestpos = IndexNejvetsiho(arr, arrlength, &largest);
@@ -73,7 +69,7 @@ unsigned int IndexNejvetsiho(int *arr, unsigned int arrlength, int *largest){
 
 void assignRandoms(int *arr, unsigned int arrlength, int randmin, int randmax){
     for (int i = 0; i < arrlength; i++){
-        *(arr+i) = (rand() % randmax) + randmin;
+        *( arr + i ) = (rand() % (randmax-randmin) ) + randmin;
     }
 }
 
