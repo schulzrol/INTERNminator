@@ -4,7 +4,7 @@
 
 unsigned int IndexNejvetsiho(int *arr, unsigned arrlength, int *largest);
 void assignRandoms(int *arr, unsigned int arrlength, int randmin, int randmax);
-void printhelp();
+void printhelp(void);
 
 #define defaultRANDMAX 1000
 #define defaultRANDMIN 0
@@ -26,7 +26,7 @@ int main(int argc, char *argv[]){
     randmax = defaultRANDMAX;
 
     if(argc > 1){   /* If there are any main arguments rewrite default values */
-        if(argc >= 2) arrlength = atoi(*(argv+1));  /* user inputed second argument "arrlength" */
+        arrlength = abs(atoi(*(argv+1)));  /* user inputed second argument "arrlength" */
         if(argc >= 3) randmin = atoi(*(argv+2));    /* user inputed third argument "randmin" */
         if(argc == 4) randmax = atoi(*(argv+3));    /* user inputed fourth argument "randmax" */
         if(argc > 4){                               /* user inputed some #$@&%*! */
