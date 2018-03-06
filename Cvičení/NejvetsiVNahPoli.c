@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-unsigned int IndexNejvetsiho(int *arr, unsigned arrlength, int *largest);
+unsigned int IndexNejvetsiho(int *arr, unsigned arrlengtht);
 void assignRandoms(int *arr, unsigned int arrlength, int randmin, int randmax);
-void printhelp(void);
+void printHelp(void);
 
 #define defaultRANDMAX 1000
 #define defaultRANDMIN 0
@@ -30,7 +30,7 @@ int main(int argc, char *argv[]){
         if(argc >= 3) randmin = atoi(*(argv+2));    /* user inputed third argument "randmin" */
         if(argc == 4) randmax = atoi(*(argv+3));    /* user inputed fourth argument "randmax" */
         if(argc > 4){                               /* user inputed some #$@&%*! */
-            printHelp(void);
+            printHelp();
             return -1;
         }
     }
