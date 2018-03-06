@@ -30,7 +30,7 @@ int main(int argc, char *argv[]){
         if(argc >= 3) randmin = atoi(*(argv+2));    /* user inputed third argument "randmin" */
         if(argc == 4) randmax = atoi(*(argv+3));    /* user inputed fourth argument "randmax" */
         if(argc > 4){                               /* user inputed some #$@&%*! */
-            printHelp();
+            printHelp(void);
             return -1;
         }
     }
@@ -44,7 +44,9 @@ int main(int argc, char *argv[]){
     /* printf("\nrandmax: %d\nrandmin: %d\narrlength: %u\n\n", randmax, randmin, arrlength); */
 
     assignRandoms(arr, arrlength, randmin, randmax);    /* scramble things up a bit */
-    largestpos = IndexNejvetsiho(arr, arrlength, &largest);
+    largestpos = IndexNejvetsiho(arr, arrlength);
+    largest = arr[largestpos];
+
 
     free(arr);
     arr = NULL;
@@ -53,14 +55,14 @@ int main(int argc, char *argv[]){
     return 0;
 }
 
-unsigned int IndexNejvetsiho(int *arr, unsigned int arrlength, int *largest){
+unsigned int IndexNejvetsiho(int *arr, unsigned int arrlength){
     unsigned int largestpos = 0;
 
-    *largest = *arr;
+    int largest = *arr;
 
     for (int i = 0; i < arrlength; i++){
-        if(*(arr+i) > *largest){
-            *largest = *(arr+i);
+        if(*(arr+i) > largest){
+            largest = *(arr+i);
             largestpos = i;
         }
     }
