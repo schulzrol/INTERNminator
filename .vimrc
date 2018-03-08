@@ -16,7 +16,7 @@ set encoding=utf-8
 set visualbell
 set noerrorbells
 set mouse=a
-
+ 
 "Mappings
 noremap % v% 
 nnoremap j gj
@@ -26,14 +26,7 @@ nnoremap P gP
 nnoremap <C-h> <C-Left>
 nnoremap <C-l> <C-Right>
 
-inoremap <A-h> <C-o>h
-inoremap <A-j> <C-o>j
-inoremap <A-k> <C-o>k
-inoremap <A-l> <C-o>l
-inoremap <A-w> <C-o>w
-inoremap <A-b> <C-o>b
-
-inoremap <C-z> <C-o>u 
+inoremap <S-BS> <DEL>
 inoremap jj <Esc>
 
 "Libvirt prefs
