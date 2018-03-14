@@ -1,21 +1,12 @@
 #include <stdlib.h>
 #include "argValid.h"
 
-int argValid(const char* arg, int* storeArg, unsigned int base){
-    unsigned int defBase = 0;
+int argValid(const char* arg, long int* storeArg, unsigned int base){
+ 
     char* endptr = NULL;
     int temp;
 
-    /* checking base */
-    if( ((base >= 2) && (base <= 32)) && (base <> defBase) ){
-        defBase = base;
-    }
-    else{
-        /* invalid base */
-        return -1;
-    }
-
-    temp = strtol(arg, &endptr, defBase);
+    temp = strtol(arg, &endptr, base);
 
     /* no digits in string */
     if(endptr == arg){

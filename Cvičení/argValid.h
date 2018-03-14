@@ -1,3 +1,3 @@
 #include <stdlib.h>
 
-int argValid(const char* arg, int** storeArg, unsigned int base);
+int argValid(const char* arg, long int* storeArg, unsigned int base);

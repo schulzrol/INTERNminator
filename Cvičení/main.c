@@ -4,6 +4,7 @@
 #include "assignRandoms.h"
 #include "IndexNejvetsiho.h"
 #include "printHelp.h"
+#include "argValid.h"
 
 #define defaultRANDMAX 1000
 #define defaultRANDMIN 0
@@ -28,7 +29,7 @@ int main(int argc, char *argv[]){
         arrlength = abs(atoi(*(argv+1)));
         if(argc >= 3) randmin = atoi(*(argv+2));
         if(argc == 4) randmax = atoi(*(argv+3));
-        if(argc > 4){                         
+        if(argc > 4){
             printHelp();
             return -1;
         }
@@ -39,7 +40,7 @@ int main(int argc, char *argv[]){
         printf("=> Not enough memory bro ;(\n");
         return -1;
     }
-    
+
     assignRandoms(arr, arrlength, randmin, randmax);
     largestpos = IndexNejvetsiho(arr, arrlength);
     largest = arr[largestpos];
