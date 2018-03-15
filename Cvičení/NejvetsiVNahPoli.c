@@ -15,8 +15,8 @@ int main(int argc, char *argv[]){
         randmin,
         randmax;
     int *arr;
-    unsigned int largestpos,
-                 arrlength;
+    long int largestpos,
+             arrlength;
 
     srand((int)time(NULL));
 
@@ -67,6 +67,6 @@ int main(int argc, char *argv[]){
     free(arr);
     arr = NULL;
 
-    printf("=> arr[%u] = %d\n", largestpos, largest );
+    printf("=> arr[%ld] = %ld\n", largestpos, largest );
     return 0;
 }

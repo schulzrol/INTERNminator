@@ -5,7 +5,7 @@ SRCS =  argValid.c assignRandoms.c IndexNejvetsiho.c printHelp.c
 HEADERS = ${SRCS:.c=.h}
 OBJS = ${SRCS:.c=.o} $(MAINSRC:.c=.o) 
 OBJDIR = ./obj
-LIBD =.\include
+LIBD =./include
 
 .PHONY: all clean	
 
@@ -14,7 +14,7 @@ all: $(PROGRAM)
 %.o: %.c $(HEADERS)
 	$(CC) -c $< -o $@
 $(PROGRAM): $(OBJS)
-	$(CC) $? -o $@
+	$(CC) $^ -o $@
 
 clean:
 	rm -f  $(PROGRAM) $(OBJS)
