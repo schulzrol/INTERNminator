@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <math.h>
 #define PATH "Test/Macbeth.txt"   // testing Path to text file
 #define ASCIIstart 65             // capital A
 #define ASCIIend 90               // capital Z
