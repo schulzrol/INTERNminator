@@ -4,7 +4,7 @@
 #include "assignRandoms.h"
 #include "IndexNejvetsiho.h"
 #include "printHelp.h"
-#include "argValid.h"
+#include "toNumber.h"
 
 #define defaultRANDMAX 1000
 #define defaultRANDMIN 0
@@ -30,19 +30,16 @@ int main(int argc, char *argv[]){
 
     /* If there are any main arguments rewrite default values */
     if(argc > 1){
-        if( argValid(argv[1], &arrlength, 10) < 0 ){
-            printf("=> Cannot use '%s' !\n", argv[1]);
+        if( toNumber(argv[1], &arrlength, 10) < 0 ){
             return -1;
         }
         if(argc >= 3){
-            if( argValid(argv[2], &randmin, 10) < 0){
-                printf("=> Cannot use '%s' !\n", argv[2]);
+            if( toNumber(argv[2], &randmin, 10) < 0){
                 return -1;
             }
         }
         if(argc == 4){
-            if( argValid(argv[3], &randmax, 10) < 0){
-                printf("=> Cannot use '%s' !\n", argv[3]);
+            if( toNumber(argv[3], &randmax, 10) < 0){
                 return -1;
             }
         }
