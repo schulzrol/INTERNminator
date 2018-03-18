@@ -30,19 +30,19 @@ int main(int argc, char *argv[]){
 
     /* If there are any main arguments rewrite default values */
     if(argc > 1){
-        if(!(argValid(argv[1], &arrlength, 10))){
-            printf("Cannot parse '%s' !\n", argv[1]);
+        if( argValid(argv[1], &arrlength, 10) < 0 ){
+            printf("=> Cannot use '%s' !\n", argv[1]);
             return -1;
         }
         if(argc >= 3){
-            if(!(argValid(argv[2], &randmin, 10))){
-                printf("Cannot parse '%s' !\n", argv[2]);
+            if( argValid(argv[2], &randmin, 10) < 0){
+                printf("=> Cannot use '%s' !\n", argv[2]);
                 return -1;
             }
         }
         if(argc == 4){
-            if(!(argValid(argv[3], &randmax, 10))){
-                printf("Cannot parse '%s' !\n", argv[3]);
+            if( argValid(argv[3], &randmax, 10) < 0){
+                printf("=> Cannot use '%s' !\n", argv[3]);
                 return -1;
             }
         }
