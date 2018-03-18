@@ -10,7 +10,6 @@
 #define TOPTILE "[%2d]"
 #define INSTILE "[  ]"
 
-
 // tests functions
 int maxinArray(int arr[], int size);
 void vertHisto(int arr[], int size);

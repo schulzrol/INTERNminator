@@ -21,7 +21,6 @@ int main()
                  DO[LENGTH] = {3, 5, 10, 20, 30, 50},           /* pole Delek Odpisu */
                  ZRYPRVSAZ[LENGTH] = {3, 5, 10, 20, 30, 50},    /* pole SAZeb za PRVni rok pri ZRYchlenem odpisu */
                  ZRYDALSAZ[LENGTH] = {4, 6, 11, 21, 31, 51};    /* pole SAZeb za DALsi roky pri ZRYchlenem odpisu */
-
     unsigned short MO,      /* Metoda Odpisu */
                    iOS,     /* index vybrane odpisove skupiny */
                    roky,    /* pocet let, po které se bude odepisovat */

@@ -24,7 +24,6 @@ int main(){
         dice2 = (rand() % 6) + 1; // rolls second die - random number between 1 and 6
         sums[(dice1+dice2)-2]++; // saves the sum occurence in its proper place
     }
-
     for( int i = 0; i < 11; i++ ){  // Sum of all occurences
         tsum += sums[i];
     }

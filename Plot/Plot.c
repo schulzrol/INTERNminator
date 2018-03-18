@@ -9,7 +9,6 @@ struct Coordinations{
     int x;
     int y;
 }Coordinations;
-
 int length;
 
 int BiggestX(struct Coordinations Coords[]);

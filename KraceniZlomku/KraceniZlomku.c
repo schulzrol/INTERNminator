@@ -9,7 +9,6 @@ int delenec,
     maxdiv;
 
     printf("Zadejte celociselny nezaporny zlomek ve formatu x/x\n: ");
-
     fflush( stdout );
 
     if ( (delitel != 0) && (scanf("%d/%d", &delenec, &delitel)) ){
