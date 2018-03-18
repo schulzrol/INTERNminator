@@ -1,5 +1,7 @@
 "Rolandkuv Vimrc
 
+execute pathogen#infect()
+
 "FONTS AND COLORS
 set number
 syntax on
@@ -25,9 +27,10 @@ nnoremap p gp
 nnoremap P gP
 nnoremap <C-h> <C-Left>
 nnoremap <C-l> <C-Right>
+nnoremap <ENTER> :! make<ENTER>
 
 inoremap <S-BS> <DEL>
-inoremap jj <Esc>
+inoremap jj <ESC>
 
 "Libvirt prefs
 set nocompatible
