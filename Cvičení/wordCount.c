@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
+#include "wordCount.h"
 
 #define TRUE 1
 #define FALSE  0
@@ -19,6 +20,10 @@ unsigned int wordCount(const char* strp){
                 }
             }
             else
+                if(!inside){
+                        inside = TRUE;
+                        wcount++;
+                }
                 inside = TRUE;
         }
         

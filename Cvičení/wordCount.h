@@ -1,4 +1,4 @@
 #include <stdio.h>
-#include <ctzpe.h>
+#include <ctype.h>
 
 unsigned int wordCount(const char* strp);
