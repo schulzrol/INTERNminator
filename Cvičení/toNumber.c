@@ -11,7 +11,7 @@ int toNumber(const char* arg, long int* storeArg, unsigned int base){
     temp = strtol(arg, &endptr, base);
     
 
-    if( (errno) || (endptr != 0)){
+    if( (errno) || (endptr == arg ) || (*endptr != '\0') ){
         fprintf(stderr, "Error parsing argument: '%s'\n", arg);
         return -1; 
     }
