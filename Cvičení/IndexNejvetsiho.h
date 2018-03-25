@@ -1,1 +1,1 @@
-unsigned int IndexNejvetsiho(int *arr, unsigned int arrlength);
+unsigned int IndexNejvetsiho(long int *arr, unsigned int arrlength);

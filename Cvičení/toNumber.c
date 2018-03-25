@@ -11,8 +11,8 @@ int toNumber(const char* arg, long int* storeArg, unsigned int base){
     errno = 0;
     temp = strtol(arg, &endptr, base);
 
-    if( (errno) || (*endptr) ){
-        fprintf(stderr, "Error parsing argument: '%c'\n", *arg);
+    if( (errno) || (endptr == 0) ){
+        fprintf(stderr, "ERROR: Cannot parse argument: '%s'\n", arg);
         return -1; 
     }
     /* if we got here, argument is valid */

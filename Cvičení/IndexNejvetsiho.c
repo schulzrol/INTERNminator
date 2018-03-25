@@ -1,5 +1,5 @@
 #include "IndexNejvetsiho.h"
-unsigned int IndexNejvetsiho(int *arr, unsigned int arrlength){
+unsigned int IndexNejvetsiho(long int *arr, unsigned int arrlength){
         
         unsigned int largestpos = 0;
 

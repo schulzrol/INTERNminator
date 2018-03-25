@@ -3,66 +3,90 @@
 #include <time.h>
 #include "assignRandoms.h"
 #include "IndexNejvetsiho.h"
-#include "printHelp.h"
 #include "toNumber.h"
+#include "isBlankLine.h"
 
-#define defaultRANDMAX 1000
-#define defaultRANDMIN 0
-#define defaultLENGTH 100
+#define ALLOCJUMP 5
+#define DEFBASE 10
 
-int main(int argc, char *argv[]){
-    long int largest,
-        randmin,
-        randmax;
-    int *arr;
+int main(int argc, char *argv[]){    
+    size_t len = 0,
+           mem2alloc;
     long int largestpos,
-             arrlength;
+             largest,
+             numcount = 0,
+             arrlength = ALLOCJUMP,
+             llen,
+             number,
+             *arr;
+    FILE    *fp = NULL;
+    char    *line = NULL;
 
-    srand((int)time(NULL));
-
-    /* setting default values */
-    arrlength = defaultLENGTH;
-    randmin = defaultRANDMIN;
-    randmax = defaultRANDMAX;
-
-
-
-
-    /* If there are any main arguments rewrite default values */
-    if(argc > 1){
-        if( toNumber(argv[1], &arrlength, 10) < 0 ){
-            return -1;
-        }
-        if(argc >= 3){
-            if( toNumber(argv[2], &randmin, 10) < 0){
-                return -1;
-            }
-        }
-        if(argc == 4){
-            if( toNumber(argv[3], &randmax, 10) < 0){
-                return -1;
-            }
-        }
-        if(argc > 4){
-            printHelp();
-            return -1;
-        }
-    }
-
-    arr = malloc( arrlength * sizeof(int) );  /* dynamically allocate array for 'arraylengh' ints */
-
-    if (arr == NULL) {  /* if malloc couldn't allocate that much memory */
-        printf("=> Not enough memory bro\n");
+    /* Check if correctly executed */
+    if(argc != 2){
+        printf("USAGE:\tmaxinarr [FILE_NAME]\n\t\tFILE_NAME\n\t\t\tName of file in which you wish to find the largest number (current directory by default).\n\n)");
         return -1;
     }
 
-    assignRandoms(arr, arrlength, randmin, randmax);    /* scramble things up a bit */
-    largestpos = IndexNejvetsiho(arr, arrlength);
+    /* Check file */
+    fp = fopen(argv[1], "r");
+    if (fp == NULL){
+        fprintf(stderr, "ERROR:\tFailed to open file: %s\n", argv[1]);
+        return -1;
+    }
+    
+    mem2alloc = (size_t) arrlength * sizeof(unsigned int);
+    arr = malloc( mem2alloc );
+
+    /* if malloc couldn't allocate that much memory */
+    if(arr == NULL) {  
+        printf("ERROR:\tFailed to allocate %zu bytes of memory!\n", mem2alloc);
+        return -1;
+    }
+
+    while( (llen = getline(&line, &len, fp)) != -1 ){
+        
+        /* Checko for blanko lineo */
+        if(isBlankLine(line, llen) == 0){
+            
+            /* Check if line content is valid number */
+            if(toNumber(line, &number, DEFBASE) == 0){
+                numcount++;
+                
+                /* Check if array can hold another number */
+                if(numcount > arrlength){
+                    arrlength += ALLOCJUMP;
+                    mem2alloc = (size_t) arrlength * sizeof(unsigned int);
+                    arr = realloc(arr, mem2alloc); 
+                    
+                    /* if realloc couldn't allocate that much memory */
+                    if(arr == NULL) {
+                        printf("ERROR:\tFailed to allocate %zu bytes of memory!\n", mem2alloc);
+                        return -1;
+                     }
+                }
+                arr[numcount-1] = number;
+            }
+            else{
+                return -1;
+            }
+        
+        }
+    
+    }
+    
+
+    largestpos = IndexNejvetsiho(arr, numcount);
     largest = arr[largestpos];
 
 
+    /* Deallocate all pointers */
     free(arr);
+    free(fp);
+    free(line);
     arr = NULL;
+    fp = NULL;
+    line = NULL;
 
     printf("=> arr[%ld] = %ld\n", largestpos, largest );
     return 0;

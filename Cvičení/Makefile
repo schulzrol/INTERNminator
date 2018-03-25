@@ -1,7 +1,7 @@
 PROGRAM = maxinarr
 CC = gcc
 MAINSRC = NejvetsiVNahPoli.c
-SRCS =  toNumber.c assignRandoms.c IndexNejvetsiho.c printHelp.c
+SRCS = isBlankLine.c toNumber.c assignRandoms.c IndexNejvetsiho.c
 HEADERS = ${SRCS:.c=.h}
 OBJS = ${SRCS:.c=.o} $(MAINSRC:.c=.o) 
 OBJDIR = ./obj
