@@ -8,7 +8,8 @@ int toNumber(const char* arg, long int* storeArg, unsigned int base){
     temp = strtol(arg, &endptr, base);
       
 
-    if( (errno) || (endptr == arg ) || (*endptr != '\0') ){
+    if( (errno) || (endptr == arg ) || ( *endptr != '\0' && *endptr != '\n' && *endptr != EOF && *endptr != ' ') ){
+        printf("err at: \"%c\"\n", *endptr);
         return -1; 
     }
     /* if we got here, argument is valid */

@@ -62,13 +62,14 @@ int main(int argc, char *argv[]){
                     /* if realloc couldn't allocate that much memory */
                     if(arr == NULL) {
                        fprintf(stderr, "ERROR:\tFailed to allocate %zu bytes of memory!\n", mem2alloc);
-                        return -1;
+                       return -1;
                      }
                 }
+
                 arr[numcount-1] = number;
             }
             else{
-                fprintf(stderr,"ERROR: Failed to parse argument: '%s'/n", line);
+                fprintf(stderr,"ERROR:\tFailed to parse argument: '%s'/n", line);
                 return -1;
             }
         
