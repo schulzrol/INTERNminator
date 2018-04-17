@@ -69,7 +69,7 @@ int main(int argc, char *argv[]){
                 arr[numcount-1] = number;
             }
             else{
-                fprintf(stderr,"ERROR:\tFailed to parse argument: '%s'/n", line);
+                fprintf(stderr,"ERROR:\tFailed to parse argument: '%s'\n", line);
                 return -1;
             }
         
