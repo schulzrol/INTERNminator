@@ -6,6 +6,6 @@
 #include "traverseLeft.h"
 #include <stdlib.h>
 
-node* insertlist(node* head, node* sublist);
+node* insertlist(node* head, node** sublist);
 
 #endif

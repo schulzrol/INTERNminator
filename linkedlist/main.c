@@ -33,7 +33,7 @@ int main(){
     printlist(head);
         printf("\n");    
 
-    insertlist(head->next, sublist);
+    insertlist(head->next, &sublist);
     
     
         printf("Main list merged with sublist:\n");
