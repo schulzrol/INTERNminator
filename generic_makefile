@@ -1,0 +1,26 @@
+PROGRAM = # name of executable
+CC = # compiler used: gcc
+MAINSRC = # main source file, in most cases main.c
+SRCS = # .c files containing funcs
+HEADERS = # .h files
+
+CFLAGS = -O0 -ggdb -Wall -Werror
+
+# 'make' or 'make all' compiles executable
+# 'make clean' - removes files produced mid compiling
+
+#====NO TOUCHIE TOUCHIE BELOW THIS LINE====#
+
+OBJS = ${SRCS:.c=.o} $(MAINSRC:.c=.o)
+.PHONY: all clean	
+
+all: $(PROGRAM)
+
+$(PROGRAM): $(OBJS)
+	$(CC) $(CFLAGS) $^ -o $@
+
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f  $(PROGRAM) $(OBJS)
